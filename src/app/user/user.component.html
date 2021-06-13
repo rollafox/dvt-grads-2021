@@ -1,8 +1,15 @@
-<ul>
-  <li *ngFor="let name of users">
-    <a 
-    (click)="programaticRoute(name)">{{name}}</a>
-  </li>
-</ul>
+<div class="view-container">
+  <div class="list-part">
+    <mat-selection-list role="list"
+                        [multiple]="false">
+      <mat-list-option role="listitem"
+                       *ngFor="let user of users"
+                       (click)="programaticRoute(user.firstName)">{{user.firstName}}</mat-list-option>
+    </mat-selection-list>
 
-<router-outlet></router-outlet>
+  </div>
+
+  <div class="view-part">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,21 +1,33 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { UserRoutingModule } from './user-routing.module';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { CoreModule } from '../core/core.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { UserComponent } from './user.component';
 import { UserEditorComponent } from './user-editor/user-editor.component';
+import { UserListEditorComponent } from './user-list-editor/user-list-editor.component';
+import { UserRoutingModule } from './user-routing.module';
+import { UserComponent } from './user.component';
+
 
 
 @NgModule({
   declarations: [
     UserComponent,
     UserDetailComponent,
-    UserEditorComponent
+    UserEditorComponent,
+    UserListEditorComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule,
+    MatInputModule,
+    MatListModule,
+    MatButtonModule,
+    CoreModule
   ],
   exports: [
     UserComponent

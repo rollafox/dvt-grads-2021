@@ -1,0 +1,35 @@
+.form-container {
+  margin: 5px 15px;
+
+  .inner-form-value {
+    margin: 10px;
+    padding: 10px;
+    background-color: #DEDEDE;
+  }
+
+  .example-form {
+    width: 100%;
+
+    .form-action {
+      margin-bottom: 20px;
+    }
+
+    .input-container {
+      span {
+        color: red;
+      }
+    }
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  .form-detail-section {
+
+    span {
+      color: #002478;
+    }
+  }
+
+}

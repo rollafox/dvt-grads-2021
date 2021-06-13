@@ -1,0 +1,20 @@
+<div class="input-container">
+  <mat-form-field class="example-full-width">
+    <mat-label for="emailAddress">Email Address</mat-label>
+    <input type="email"
+           #emailAddress="ngModel"
+           [(ngModel)]="innerValue"
+           name="emailAddress"
+           matInput
+           required
+           email />
+  </mat-form-field>
+  <span *ngIf="emailAddress.touched && emailAddress.hasError && emailAddress.errors?.required">This field is
+    required</span>
+</div>
+
+<!-- Usage: -->
+<!-- <app-email-input class="example-full-width"
+                 #emailAddress="ngModel"
+                 [(ngModel)]="user.emailAddress"
+                 name="emailAddress"></app-email-input> -->

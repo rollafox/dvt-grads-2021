@@ -1,19 +1,73 @@
 <div class="form-container">
-  <form>
+  <form #userEditor="ngForm"
+        class="example-form"
+        *ngIf="user; else noSelectedUser">
 
-    <div class="input-container">
-      <label for="username">User Name</label>
-      <input type="text"
-             name="username"
-             required />
+    <div class="form-action">
+      <button (click)="onSave(userEditor)"
+              mat-raised-button
+              color="primary">Save Profile</button>
     </div>
 
     <div class="input-container">
-      <label for="emailAddress">Email Address</label>
-      <input type="email"
-             name="emailAddress"
-             required />
+      <mat-form-field class="example-full-width">
+        <mat-label for="username">User Name</mat-label>
+        <input type="text"
+               [(ngModel)]="user.firstName"
+               name="username"
+               matInput
+               required />
+      </mat-form-field>
     </div>
 
+    <div class="input-container">
+      <mat-form-field class="example-full-width">
+        <mat-label for="surname">Surame</mat-label>
+        <input type="text"
+               [(ngModel)]="user.surname"
+               name="surname"
+               matInput
+               appDoeValidator
+               required />
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field class="example-full-width">
+        <mat-label for="emailAddress">Email Address</mat-label>
+        <input type="email"
+               #emailAddress="ngModel"
+               [(ngModel)]="user.emailAddress"
+               name="emailAddress"
+               matInput
+               required
+               email />
+      </mat-form-field>
+      <span *ngIf="emailAddress.touched && emailAddress.hasError && emailAddress.errors?.required">This field is
+        required</span>
+    </div>
+
+    <div class="inner-form-value">
+      <div class="form-detail-section">
+        <div>Form Values:</div>
+        <div><span>{{userEditor.value | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>isValid?: <span>{{userEditor.valid | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>Pristine?: <span>{{userEditor.pristine | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>Dirty?: <span>{{userEditor.dirty | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>Touched?: <span>{{userEditor.touched | json}}</span></div>
+      </div>
+    </div>
   </form>
+
+  <ng-template #noSelectedUser>
+    <h3>No Selected User.</h3>
+  </ng-template>
 </div>

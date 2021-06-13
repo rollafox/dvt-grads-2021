@@ -1,9 +1,9 @@
 
 <div class="user-navigation">
-  <div [routerLink]="'/users'">Back to List</div>
-  <div [routerLink]="['/users', userName, 'edit']">Edit Profile</div>
+  <!-- <button [routerLink]="'/users'" mat-raised-button color="primary">Back to List</button> -->
+  <button [routerLink]="['/users', userName, 'edit']" mat-raised-button color="primary">Edit Profile</button>
 </div>
 
-<div>
+<div class="selection">
   <h2>{{userName}} Has Been Selected</h2>
 </div>

@@ -1,0 +1,13 @@
+.view-container {
+  display: flex;
+
+
+  .list-part {
+    width: 130px;
+  }
+
+  .view-part {
+    flex: auto;
+  }
+
+}
