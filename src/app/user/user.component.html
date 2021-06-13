@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let name of users">
+    <a 
+    (click)="programaticRoute(name)">{{name}}</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
