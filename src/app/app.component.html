@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <header>
+    <h1>Angular Routing & Forms Demo</h1>
+  </header>
+</mat-toolbar>
+
+<nav>
+  <ul>
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/users">Users</a></li>
+    <li><a routerLink="/feature">Feature</a></li>
+  </ul>
+</nav>
+
+<mat-card class="feature-container">
+  <router-outlet></router-outlet>
+</mat-card>

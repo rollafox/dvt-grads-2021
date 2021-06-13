@@ -1,0 +1,32 @@
+@use '~@angular/material' as mat;
+
+@font-face {
+  font-family: FiraCode;
+  src: local("FiraCode"),
+    url(../assets/fonts/FiraCode.ttf) format("ttf");
+  font-weight: normal;
+  font-stretch: normal;
+}
+
+// @font-face {
+//   font-family: Montserrat;
+//   src: local("Montserrat"),
+//   url(../assets/fonts/Montserrat-Regular.ttf) format("ttd");
+//   font-weight: normal;
+//   font-stretch: normal;
+// }
+
+$sample-typography: mat.define-typography-config($font-family: 'Fira Code');
+
+input {
+  font-size: 14px;
+  font-family: mat.font-family($sample-typography);
+}
+
+.text-primary {
+  color: #3E3E3E;
+}
+
+.text-medium-heading {
+  color: #2E2E2E;
+}

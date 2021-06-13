@@ -1,0 +1,56 @@
+@use '~@angular/material' as mat;
+@import '_typography';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core($sample-typography);
+
+$sample-accent-palette: (50: #E7E9F5,
+  100: #C2C9E7,
+  200: #9AA6D6,
+  300: #7183C6,
+  400: #5268BA,
+  500: #2F4FAE,
+  600: #2848A5,
+  700: #1E3F99,
+  800: #14358D,
+  900: #002478,
+  A100: #C2C9E7,
+  A200: #9AA6D6,
+  A400: #5268BA,
+  A700: #1E3F99,
+  contrast: (50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  ));
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$sample-app-primary: mat.define-palette($sample-accent-palette);
+$sample-app-accent: mat.define-palette($sample-accent-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$sample-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$sample-app-theme: mat.define-light-theme($sample-app-primary, $sample-app-accent, $sample-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($sample-app-theme);
