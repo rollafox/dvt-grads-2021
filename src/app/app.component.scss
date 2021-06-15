@@ -1,21 +1,31 @@
-nav {
-  ul {
-    display: flex;
-    list-style: none;
+mat-toolbar {
+  display: flex;
 
-    li {
-      margin: 20px;
+  header {
+    flex: auto;
+  }
 
-      a {
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 20px;
+  nav {
+    ul {
+      display: flex;
+      list-style: none;
+
+      li {
+        margin: 20px;
+
+        a {
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 20px;
+        }
       }
     }
   }
 }
 
 .feature-container {
-  width: 800px;
-  margin: 0 auto;
+  min-width: 500px;
+  max-width: 1100px;
+  margin: 40px auto;
 }
