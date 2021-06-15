@@ -22,7 +22,7 @@ export class UserEditorComponent implements OnInit {
     });
   }
 
-  onSave(form: any) {
-    console.log('Form to save -> ', form)
+  onSave(form: any): void {
+    console.log('Form to save -> ', form);
   }
 }

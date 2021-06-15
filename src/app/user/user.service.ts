@@ -30,6 +30,9 @@ export class UserService {
 
   findUser(name: string): User | null {
     return this.users.find(user => user.firstName.indexOf(name) >= 0 || user.surname.indexOf(name) >= 0) || null;
+
+    // Make immutable
+    // return ({...this.users.find(user => user.firstName.indexOf(name) >= 0 || user.surname.indexOf(name) >= 0)} as User) || null;
   }
 
   updateUser(user: Partial<User>): Observable<string> {

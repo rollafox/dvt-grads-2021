@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditorComponent } from './user-editor/user-editor.component';
+import { UserListEditorComponent } from './user-list-editor/user-list-editor.component';
 import { UserComponent } from './user.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: ':name/edit',
         component: UserEditorComponent,
+      },
+      {
+        path: ':name/edit-reactive',
+        component: UserListEditorComponent,
       }
     ]
   },

@@ -1,1 +1,69 @@
-<p>user-list-editor works!</p>
+<div class="form-container">
+  <form *ngIf="userForm"
+        [formGroup]="userForm">
+
+    <div class="form-action">
+      <button (click)="onSave()"
+              mat-raised-button
+              color="primary">Save Profile</button>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field class="example-full-width">
+        <mat-label for="username">User Name</mat-label>
+        <input type="text"
+               formControlName="firstName"
+               name="username"
+               matInput
+               required />
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field class="example-full-width">
+        <mat-label for="surname">Surame</mat-label>
+        <input type="text"
+               formControlName="surname"
+               name="surname"
+               matInput
+               appDoeValidator
+               required />
+      </mat-form-field>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field class="example-full-width">
+        <mat-label for="emailAddress">Email Address</mat-label>
+        <input type="email"
+               formControlName="emailAddress"
+               name="emailAddress"
+               matInput
+               required
+               email />
+      </mat-form-field>
+      <span *ngIf="userForm.get('emailAddress')?.touched &&
+        userForm.get('emailAddress')?.hasError &&
+        userForm.get('emailAddress')?.errors?.required">This field is required</span>
+    </div>
+
+    <div class="inner-form-value">
+      <div class="form-detail-section">
+        <div>Form Values:</div>
+        <div><span>{{userForm.value | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>isValid?: <span>{{userForm.valid | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>Pristine?: <span>{{userForm.pristine | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>Dirty?: <span>{{userForm.dirty | json}}</span></div>
+      </div>
+      <div class="form-detail-section">
+        <div>Touched?: <span>{{userForm.touched | json}}</span></div>
+      </div>
+    </div>
+
+  </form>
+</div>
