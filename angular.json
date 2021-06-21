@@ -46,6 +46,22 @@
             "namedChunks": true
           },
           "configurations": {
+            "express": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.express.ts"
+                }
+              ]
+            },
+            "nest": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.nest.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {

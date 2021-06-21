@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { User } from '../core/models/user';
 import { UserService } from './user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from './user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  public users: User[] = [];
+  public users: Observable<User[]> = of([]);
 
   constructor(
     private router: Router,

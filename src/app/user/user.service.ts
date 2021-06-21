@@ -1,38 +1,33 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.nest';
 import { User } from '../core/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  users: User[] = [
-    {
-      firstName: 'John',
-      surname: 'Doe',
-      emailAddress: 'john@dvt.com',
-    },
-    {
-      firstName: 'Tom',
-      surname: 'Doe',
-      emailAddress: 'tom@dvt.com',
-    }
-  ];
+  users: User[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getUsers(): User[] {
+  getUsers(): Observable<User[]> {
     if (this.users && this.users.length) {
-      return this.users;
+      return of(this.users);
     }
-    return this.users; // this.httpRequestToGetUsers();
+    return this.http.get<User[]>(`${environment.api_url}/users`)
+      .pipe(
+        map((users: User[]) => { this.users = users; return this.users; })
+      );
   }
 
   findUser(name: string): User | null {
-    return this.users.find(user => user.firstName.indexOf(name) >= 0 || user.surname.indexOf(name) >= 0) || null;
+    // return this.users.find(user => user.firstName.indexOf(name) >= 0 || user.surname.indexOf(name) >= 0) || null;
 
     // Make immutable
-    // return ({...this.users.find(user => user.firstName.indexOf(name) >= 0 || user.surname.indexOf(name) >= 0)} as User) || null;
+    return ({ ...this.users?.find(user => user.firstName.indexOf(name) >= 0 || user.surname.indexOf(name) >= 0) } as User) || null;
   }
 
   updateUser(user: Partial<User>): Observable<string> {
@@ -41,3 +36,4 @@ export class UserService {
     // return this.httpRequestToSaveUser(user);
   }
 }
+

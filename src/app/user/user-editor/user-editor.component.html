@@ -33,18 +33,11 @@
     </div>
 
     <div class="input-container">
-      <mat-form-field class="example-full-width">
-        <mat-label for="emailAddress">Email Address</mat-label>
-        <input type="email"
-               #emailAddress="ngModel"
-               [(ngModel)]="user.emailAddress"
-               name="emailAddress"
-               matInput
-               required
-               email />
-      </mat-form-field>
-      <span *ngIf="emailAddress.touched && emailAddress.hasError && emailAddress.errors?.required">This field is
-        required</span>
+      <app-email-input class="example-full-width"
+                       #emailAddress="ngModel"
+                       [(ngModel)]="user.emailAddress"
+                       name="emailAddress">
+      </app-email-input>
     </div>
 
     <div class="inner-form-value">
