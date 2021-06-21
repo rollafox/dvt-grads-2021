@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user';
 import { UserService } from '../user.service';
 
@@ -17,12 +19,17 @@ export class UserEditorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe({
-      next: (params) => this.user = this.userService.findUser(params?.name) || null
-    });
+    this.route.params
+      .pipe(
+        switchMap(params => this.userService.findUser(params?.name))
+      )
+      .subscribe({
+        next: (user) => this.user = user || null
+      });
   }
 
   onSave(form: any): void {
-    console.log('Form to save -> ', form);
+    this.userService.updateUser(form.value)
+      .subscribe(res => console.log('onSave -> ', res))
   }
 }
